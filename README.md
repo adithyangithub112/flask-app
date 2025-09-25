@@ -22,4 +22,19 @@ This is a Flask web application that includes:
 3. Configure your email in `app.py` or using environment variables
 4. Run `python app.py` to start the server
 
+
+Screenshots
+<img width="1901" height="901" alt="Screenshot 2025-09-25 191636" src="https://github.com/user-attachments/assets/f0430086-bbb2-4b12-b787-09669a53329f" />
+
+
+<img width="1895" height="917" alt="Screenshot 2025-09-25 191228" src="https://github.com/user-attachments/assets/5daaddc2-4cef-4058-a377-b3a7e8e39a78" />
+
+
+<img width="1895" height="906" alt="Screenshot 2025-09-25 191236" src="https://github.com/user-attachments/assets/73baaeab-c412-41f0-8b8f-6e6832315139" />
+
+
+<img width="1901" height="901" alt="Screenshot 2025-09-25 191636" src="https://github.com/user-attachments/assets/32269212-9c51-4e1d-a2d9-2cc0dbd68e22" />
+
+
+
 ---
