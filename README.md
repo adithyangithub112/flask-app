@@ -24,7 +24,9 @@ This is a Flask web application that includes:
 
 
 Screenshots
-<img width="1901" height="901" alt="Screenshot 2025-09-25 191636" src="https://github.com/user-attachments/assets/f0430086-bbb2-4b12-b787-09669a53329f" />
+
+<img width="1919" height="964" alt="Screenshot 2025-09-25 191140" src="https://github.com/user-attachments/assets/0dac8b68-b2bd-4f03-9cbd-c98d71f4ca4f" />
+
 
 
 <img width="1895" height="917" alt="Screenshot 2025-09-25 191228" src="https://github.com/user-attachments/assets/5daaddc2-4cef-4058-a377-b3a7e8e39a78" />
