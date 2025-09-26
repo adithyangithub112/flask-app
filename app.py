@@ -1,4 +1,3 @@
-# app.py
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
@@ -13,14 +12,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-# Important: It is a security risk to hardcode credentials.
-# Instead, store them in environment variables.
-# Example: export MAIL_USERNAME="your_email@gmail.com"
-# Example: export MAIL_PASSWORD="your_app_password"
 
-# Flask application setup
+#Flask application setup
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'a_very_secret_key_that_you_should_change'
+app.config['SECRET_KEY'] = 'my-secret-key-123'   # secure session cookies and CSRF tokens
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
@@ -69,7 +64,7 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Login')
 
-# Helper functions
+
 def generate_otp():
     """Generates a 6-digit OTP."""
     return str(random.randint(100000, 999999))
@@ -87,7 +82,7 @@ def send_otp_email(email, otp):
         print("Email sending failed:", e)
         flash('Failed to send OTP email. Please check your email configuration.', 'danger')
 
-# This function is crucial for preventing a logged-out user from seeing cached pages.
+#session handling
 @app.after_request
 def prevent_caching(response):
     response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
@@ -95,14 +90,14 @@ def prevent_caching(response):
     response.headers['Expires'] = '0'
     return response
 
-# Routes
+
 @app.route('/')
 def home():
     return redirect(url_for('login'))
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    # If user is already logged in, redirect to dashboard.
+    #if user is alreay logged , then redirecting to dashboard
     if 'user_id' in session:
         return redirect(url_for('dashboard'))
 
@@ -117,7 +112,7 @@ def register():
                 flash('Email already registered and verified. Please login.', 'info')
                 return redirect(url_for('login'))
             else:
-                # Resend OTP if user is not verified
+                #otp resend if not registered
                 otp = generate_otp()
                 session['otp'] = otp
                 session['email'] = email
@@ -130,7 +125,7 @@ def register():
         db.session.add(new_user)
         db.session.commit()
 
-        # Send OTP for new user
+        #otp for new users
         otp = generate_otp()
         session['otp'] = otp
         session['email'] = email
@@ -165,7 +160,7 @@ def verify_otp():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    # If user is already logged in, redirect to dashboard.
+    #if user is alreay logged , then redirecting to dashboard
     if 'user_id' in session:
         return redirect(url_for('dashboard'))
 
